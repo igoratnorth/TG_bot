@@ -17,13 +17,14 @@ namespace TG_bot
             Console.ReadKey();
         }
 
-        private static void Handler_OnMassage(object sender, MessageEventArgs e)
+        private static async void Handler_OnMassage(object sender, MessageEventArgs e)
         {
             var text = e?.Message;
             var text2 = e?.Message?.Text;
-            Console.WriteLine("отладочка");
+
             Console.WriteLine($"e.masage '{text}' e.massage.text '{text2}' \n Info: '{e.Message.From}' ,  '{e.Message.Chat.Id}', '{e.Message.Contact}'");
 
+            await tg_client_test1.SendTextMessageAsync(chatId:e.Message.Chat, text: $"Привет человек! что такое {e.Message.Text}");
         }
     }
 }
